@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Package, Truck, Users, Building2, GraduationCap, Calendar, Briefcase } from "lucide-react";
+import corporateHero from "@/assets/corporate-gifting-hero.jpg";
+import corporateLaptopBags from "@/assets/corporate-laptop-bags.jpg";
+import corporateCustomization from "@/assets/corporate-customization.jpg";
 
 const bagSolutions = [
   "Laptop bags for employee onboarding & welcome kits",
@@ -37,12 +40,25 @@ export const CorporateGifting = () => {
   return (
     <section id="corporate-gifting" className="py-20 bg-muted/30">
       <div className="container px-4">
+        {/* Hero Image */}
+        <div className="relative rounded-2xl overflow-hidden mb-16 shadow-elegant">
+          <img 
+            src={corporateHero} 
+            alt="Corporate gift bags collection featuring branded laptop bags and backpacks" 
+            className="w-full h-64 md:h-96 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end">
+            <div className="p-8 md:p-12">
+              <span className="text-accent font-semibold text-sm uppercase tracking-wider">Corporate Solutions</span>
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mt-2">
+                Corporate Gift Bags in Kerala
+              </h2>
+            </div>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider">Corporate Solutions</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mt-2 mb-6">
-            Corporate Gift Bags in Kerala
-          </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Ozobags is a <strong className="text-foreground">corporate gift bag manufacturer based in Kochi, Kerala</strong>, 
             specialising in bulk and customised bag solutions for companies, institutions, and organisations. 
@@ -55,8 +71,15 @@ export const CorporateGifting = () => {
         </div>
 
         {/* Bag Solutions */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
-          <div className="bg-card rounded-2xl p-8 shadow-card">
+        <div className="grid lg:grid-cols-2 gap-12 mb-20 items-center">
+          <div className="rounded-2xl overflow-hidden shadow-card order-2 lg:order-1">
+            <img 
+              src={corporateLaptopBags} 
+              alt="Corporate welcome kit with branded laptop bags" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="bg-card rounded-2xl p-8 shadow-card order-1 lg:order-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                 <Package className="w-6 h-6 text-accent" />
@@ -80,7 +103,10 @@ export const CorporateGifting = () => {
               All products are designed keeping <strong>durability, usability, and brand presentation</strong> in mind.
             </p>
           </div>
+        </div>
 
+        {/* Customisation Options */}
+        <div className="grid lg:grid-cols-2 gap-12 mb-20 items-center">
           <div className="bg-card rounded-2xl p-8 shadow-card">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
@@ -104,6 +130,13 @@ export const CorporateGifting = () => {
             <p className="text-sm text-muted-foreground mt-6 italic">
               Our team works closely with clients to ensure the final output meets both functional and branding expectations.
             </p>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-card">
+            <img 
+              src={corporateCustomization} 
+              alt="Custom branded corporate bags with logo embossing" 
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 
