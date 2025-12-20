@@ -10,8 +10,8 @@ export const Navbar = () => {
     { label: "Corporate Gifting", href: "#corporate-gifting" },
     { label: "Manufacturing", href: "#manufacturing" },
     { label: "Products", href: "#products" },
-    { label: "Our Clients", href: "#clients" },
-    { label: "Contact", href: "#contact" },
+    { label: "Clients", href: "#clients" },
+    { label: "Contact Us", href: "#contact" },
   ];
 
   return (
