@@ -100,9 +100,9 @@ export const ProductCategories = () => {
                     alt={category.title}
                     className={`w-full h-full object-cover transition-all duration-700 ${
                       // Extra zoom for Delivery Bags so it visually fits the square better
-                      category.title === "Delivery Bags" ? "scale-[1.10]" : ""
+                      category.title === "Delivery Bags" ? "scale-[1.15]" : ""
                     } ${
-                      activeIndex === index ? "scale-105" : "group-hover:scale-105"
+                      activeIndex === index ? "scale-115" : "group-hover:scale-105"
                     }`}
                   />
                   <div
