@@ -31,6 +31,7 @@ const categories = [
 export const ProductCategories = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -44,14 +45,12 @@ export const ProductCategories = () => {
         ([entry]) => {
           if (entry.isIntersecting) {
             setVisibleCards((prev) => new Set(prev).add(index));
-
-            // Set as active when mostly visible
             if (entry.intersectionRatio > 0.5) {
               setActiveIndex(index);
             }
           }
         },
-        { threshold: [0.2, 0.5, 0.8], rootMargin: "-10% 0px -10% 0px" }
+        { threshold: [0.2, 0.5, 0.8], rootMargin: "50px 0px -10% 0px" }
       );
 
       observer.observe(card);
@@ -62,18 +61,18 @@ export const ProductCategories = () => {
   }, []);
 
   return (
-    <section id="products" className="py-20 bg-muted/30">
+    <section id="products" className="py-12 md:py-20 bg-muted/30">
       <div className="container px-4" ref={sectionRef}>
-        <div className="text-center mb-16">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3 md:mb-4">
             Our Product Range
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
             Comprehensive collection of bags designed for style, functionality, and durability
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {categories.map((category, index) => (
             <div
               key={category.title}
@@ -86,6 +85,7 @@ export const ProductCategories = () => {
               style={{ transitionDelay: `${index * 100}ms` }}
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
+              onTouchStart={() => setActiveIndex(index)}
             >
               <Card
                 className={`group overflow-hidden border-2 transition-all duration-500 cursor-pointer h-full ${
@@ -95,22 +95,27 @@ export const ProductCategories = () => {
                 }`}
               >
                 <div className="relative overflow-hidden aspect-square">
+                  {/* Skeleton placeholder */}
+                  {!loadedImages.has(index) && (
+                    <div className="absolute inset-0 bg-muted animate-pulse" />
+                  )}
                   <img
                     src={category.image}
                     alt={category.title}
-                    className={`w-full h-full object-cover transition-all duration-700 ${
-                      // Extra zoom for Delivery Bags so it visually fits the square better
+                    loading="lazy"
+                    decoding="async"
+                    onLoad={() => setLoadedImages(prev => new Set(prev).add(index))}
+                    className={`w-full h-full object-cover object-center transition-all duration-700 ${
                       category.title === "Delivery Bags" ? "scale-[1.15]" : ""
                     } ${
                       activeIndex === index ? "scale-115" : "group-hover:scale-105"
-                    }`}
+                    } ${loadedImages.has(index) ? "opacity-100" : "opacity-0"}`}
                   />
                   <div
                     className={`absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent transition-opacity duration-500 ${
                       activeIndex === index ? "opacity-100" : "opacity-0 group-hover:opacity-70"
                     }`}
                   />
-                  {/* Spotlight effect when active */}
                   <div
                     className={`absolute inset-0 transition-opacity duration-500 ${
                       activeIndex === index ? "opacity-100" : "opacity-0"
@@ -123,15 +128,15 @@ export const ProductCategories = () => {
                     }}
                   />
                 </div>
-                <div className="p-6">
+                <div className="p-3 sm:p-4 md:p-6">
                   <h3
-                    className={`font-display text-xl md:text-2xl font-bold mb-2 transition-colors duration-300 ${
+                    className={`font-display text-sm sm:text-base md:text-xl lg:text-2xl font-bold mb-1 md:mb-2 transition-colors duration-300 ${
                       activeIndex === index ? "text-accent" : "text-primary group-hover:text-accent"
                     }`}
                   >
                     {category.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm md:text-base">
+                  <p className="text-muted-foreground text-xs sm:text-sm md:text-base line-clamp-2">
                     {category.description}
                   </p>
                 </div>
@@ -140,8 +145,8 @@ export const ProductCategories = () => {
           ))}
         </div>
 
-        {/* Progress indicator dots */}
-        <div className="flex justify-center gap-2 mt-10 md:hidden">
+        {/* Progress indicator dots - visible on mobile */}
+        <div className="flex justify-center gap-2 mt-6 md:hidden">
           {categories.map((_, index) => (
             <button
               key={index}
@@ -152,9 +157,9 @@ export const ProductCategories = () => {
                 });
                 setActiveIndex(index);
               }}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 activeIndex === index
-                  ? "bg-accent w-8"
+                  ? "bg-accent w-6"
                   : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
               }`}
               aria-label={`Go to ${categories[index].title}`}

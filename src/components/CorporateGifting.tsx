@@ -49,8 +49,8 @@ const industries = [
 
 export const CorporateGifting = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState<Set<number>>(new Set());
 
-  // Auto-slide every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
@@ -67,16 +67,19 @@ export const CorporateGifting = () => {
   };
 
   return (
-    <section id="corporate-gifting" className="py-20 bg-muted/30">
+    <section id="corporate-gifting" className="py-12 md:py-20 bg-muted/30">
       <div className="container px-4">
         {/* Hero Image Carousel */}
-        <div className="relative rounded-2xl overflow-hidden mb-16 shadow-elegant">
-          <div className="relative h-64 md:h-96">
+        <div className="relative rounded-xl md:rounded-2xl overflow-hidden mb-10 md:mb-16 shadow-elegant">
+          <div className="relative h-48 sm:h-64 md:h-80 lg:h-96">
             {heroImages.map((image, index) => (
               <img
                 key={index}
                 src={image.src}
                 alt={image.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+                onLoad={() => setImagesLoaded(prev => new Set(prev).add(index))}
                 className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
                   index === currentImageIndex
                     ? "opacity-100 translate-y-0"
@@ -91,28 +94,28 @@ export const CorporateGifting = () => {
           {/* Navigation buttons */}
           <button
             onClick={goToPrevious}
-            className="absolute right-4 top-4 bg-primary/80 hover:bg-primary text-primary-foreground p-2 rounded-full transition-all duration-300 hover:scale-110"
+            className="absolute right-3 md:right-4 top-3 md:top-4 bg-primary/80 hover:bg-primary text-primary-foreground p-1.5 md:p-2 rounded-full transition-all duration-300 hover:scale-110"
             aria-label="Previous image"
           >
-            <ChevronUp className="w-5 h-5" />
+            <ChevronUp className="w-4 h-4 md:w-5 md:h-5" />
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-4 top-16 bg-primary/80 hover:bg-primary text-primary-foreground p-2 rounded-full transition-all duration-300 hover:scale-110"
+            className="absolute right-3 md:right-4 top-12 md:top-16 bg-primary/80 hover:bg-primary text-primary-foreground p-1.5 md:p-2 rounded-full transition-all duration-300 hover:scale-110"
             aria-label="Next image"
           >
-            <ChevronDown className="w-5 h-5" />
+            <ChevronDown className="w-4 h-4 md:w-5 md:h-5" />
           </button>
           
           {/* Slide indicators */}
-          <div className="absolute right-16 top-4 flex flex-col gap-2">
+          <div className="absolute right-12 md:right-16 top-3 md:top-4 flex flex-col gap-1.5 md:gap-2">
             {heroImages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-1.5 md:w-2 h-1.5 md:h-2 rounded-full transition-all duration-300 ${
                   index === currentImageIndex
-                    ? "bg-accent h-6"
+                    ? "bg-accent h-4 md:h-6"
                     : "bg-primary-foreground/50 hover:bg-primary-foreground/80"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
@@ -121,9 +124,9 @@ export const CorporateGifting = () => {
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end pointer-events-none">
-            <div className="p-8 md:p-12">
-              <span className="text-accent font-semibold text-sm uppercase tracking-wider">Corporate Solutions</span>
-              <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mt-2">
+            <div className="p-4 sm:p-6 md:p-8 lg:p-12">
+              <span className="text-accent font-semibold text-xs md:text-sm uppercase tracking-wider">Corporate Solutions</span>
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-primary-foreground mt-1 md:mt-2">
                 Corporate Gifting
               </h2>
             </div>
@@ -131,158 +134,162 @@ export const CorporateGifting = () => {
         </div>
 
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <p className="text-lg text-muted-foreground leading-relaxed">
+        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-16 px-2">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
             Ozobags is a <strong className="text-foreground">corporate gift bag manufacturer based in Kochi, Kerala</strong>, 
             specialising in bulk and customised bag solutions for companies, institutions, and organisations. 
             With in-house manufacturing and a dedicated production team, we support businesses looking for 
             reliable, functional, and well-finished corporate gifting bags.
           </p>
-          <p className="text-muted-foreground mt-4">
+          <p className="text-muted-foreground mt-3 md:mt-4 text-sm md:text-base">
             Our bags are suitable for employee onboarding kits, festive gifting, conferences, seminars, and corporate events.
           </p>
         </div>
 
         {/* Bag Solutions */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20 items-center">
-          <div className="rounded-2xl overflow-hidden shadow-card order-2 lg:order-1">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20 items-center">
+          <div className="rounded-xl md:rounded-2xl overflow-hidden shadow-card order-2 lg:order-1 aspect-video lg:aspect-auto">
             <img 
               src={corporateLaptopBags} 
               alt="Corporate welcome kit with branded laptop bags" 
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="bg-card rounded-2xl p-8 shadow-card order-1 lg:order-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
-                <Package className="w-6 h-6 text-accent" />
+          <div className="bg-card rounded-xl md:rounded-2xl p-5 md:p-8 shadow-card order-1 lg:order-2">
+            <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/20 flex items-center justify-center">
+                <Package className="w-5 h-5 md:w-6 md:h-6 text-accent" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-foreground">
+              <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground">
                 Corporate Bag Solutions We Offer
               </h3>
             </div>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base">
               We manufacture and supply a wide range of bags designed specifically for corporate and institutional use:
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {bagSolutions.map((solution, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground">{solution}</span>
+                <li key={index} className="flex items-start gap-2 md:gap-3">
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground text-sm md:text-base">{solution}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-sm text-muted-foreground mt-6 italic">
+            <p className="text-xs md:text-sm text-muted-foreground mt-4 md:mt-6 italic">
               All products are designed keeping <strong>durability, usability, and brand presentation</strong> in mind.
             </p>
           </div>
         </div>
 
         {/* Customisation Options */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20 items-center">
-          <div className="bg-card rounded-2xl p-8 shadow-card">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Users className="w-6 h-6 text-primary" />
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20 items-center">
+          <div className="bg-card rounded-xl md:rounded-2xl p-5 md:p-8 shadow-card">
+            <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <Users className="w-5 h-5 md:w-6 md:h-6 text-primary" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-foreground">
+              <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground">
                 Customisation Options Available
               </h3>
             </div>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base">
               Ozobags offers end-to-end customisation support for corporate bulk orders:
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {customisationOptions.map((option, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground">{option}</span>
+                <li key={index} className="flex items-start gap-2 md:gap-3">
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground text-sm md:text-base">{option}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-sm text-muted-foreground mt-6 italic">
+            <p className="text-xs md:text-sm text-muted-foreground mt-4 md:mt-6 italic">
               Our team works closely with clients to ensure the final output meets both functional and branding expectations.
             </p>
           </div>
-          <div className="rounded-2xl overflow-hidden shadow-card">
+          <div className="rounded-xl md:rounded-2xl overflow-hidden shadow-card aspect-video lg:aspect-auto">
             <img 
               src={corporateCustomization} 
-              alt="Custom branded corporate bags with logo embossing" 
+              alt="Custom branded corporate bags with logo embossing"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>
         </div>
 
         {/* MOQ & Delivery */}
-        <div className="bg-primary rounded-2xl p-8 md:p-12 mb-20">
+        <div className="bg-primary rounded-xl md:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-12 mb-12 md:mb-20">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <Truck className="w-8 h-8 text-accent" />
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
+            <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+              <Truck className="w-6 h-6 md:w-8 md:h-8 text-accent" />
+              <h3 className="font-display text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-primary-foreground">
                 Minimum Order Quantity & Delivery Timelines
               </h3>
             </div>
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <div className="bg-primary-foreground/10 rounded-xl p-6">
-                <h4 className="font-display font-bold text-accent mb-2">MOQ</h4>
-                <p className="text-primary-foreground/90 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-4 md:mb-6">
+              <div className="bg-primary-foreground/10 rounded-lg md:rounded-xl p-4 md:p-6">
+                <h4 className="font-display font-bold text-accent mb-1 md:mb-2 text-sm md:text-base">MOQ</h4>
+                <p className="text-primary-foreground/90 text-xs md:text-sm">
                   Depends on the bag design and level of customisation
                 </p>
               </div>
-              <div className="bg-primary-foreground/10 rounded-xl p-6">
-                <h4 className="font-display font-bold text-accent mb-2">Production Timeline</h4>
-                <p className="text-primary-foreground/90 text-sm">
+              <div className="bg-primary-foreground/10 rounded-lg md:rounded-xl p-4 md:p-6">
+                <h4 className="font-display font-bold text-accent mb-1 md:mb-2 text-sm md:text-base">Production Timeline</h4>
+                <p className="text-primary-foreground/90 text-xs md:text-sm">
                   Clearly communicated after finalising specifications
                 </p>
               </div>
-              <div className="bg-primary-foreground/10 rounded-xl p-6">
-                <h4 className="font-display font-bold text-accent mb-2">Delivery Coverage</h4>
-                <p className="text-primary-foreground/90 text-sm">
+              <div className="bg-primary-foreground/10 rounded-lg md:rounded-xl p-4 md:p-6">
+                <h4 className="font-display font-bold text-accent mb-1 md:mb-2 text-sm md:text-base">Delivery Coverage</h4>
+                <p className="text-primary-foreground/90 text-xs md:text-sm">
                   Kerala and across India
                 </p>
               </div>
             </div>
-            <p className="text-primary-foreground/80 text-center">
+            <p className="text-primary-foreground/80 text-center text-sm md:text-base">
               We prioritise realistic timelines, consistent quality, and transparent communication throughout the production process.
             </p>
           </div>
         </div>
 
         {/* Why Choose Us */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20">
           <div>
-            <h3 className="font-display text-3xl font-bold text-foreground mb-6">
+            <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6">
               Why Choose Ozobags for Corporate Gift Bags in Kerala?
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 md:space-y-4">
               {whyChooseUs.map((reason, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle className="w-4 h-4 text-primary" />
+                <li key={index} className="flex items-start gap-2 md:gap-3">
+                  <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-primary" />
                   </div>
-                  <span className="text-foreground">{reason}</span>
+                  <span className="text-foreground text-sm md:text-base">{reason}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-muted-foreground mt-6 border-l-4 border-accent pl-4 italic">
+            <p className="text-muted-foreground mt-4 md:mt-6 border-l-4 border-accent pl-3 md:pl-4 italic text-sm md:text-base">
               Our objective is to build <strong className="text-foreground">long-term supplier relationships</strong>, not one-time transactions.
             </p>
           </div>
 
           <div>
-            <h3 className="font-display text-3xl font-bold text-foreground mb-6">
+            <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6">
               Industries & Organisations We Serve
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {industries.map((industry, index) => (
                 <div 
                   key={index} 
-                  className="flex items-center gap-4 p-4 bg-card rounded-xl shadow-card hover:shadow-elegant transition-shadow"
+                  className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-card rounded-lg md:rounded-xl shadow-card hover:shadow-elegant transition-shadow"
                 >
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
-                    <industry.icon className="w-6 h-6 text-primary" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
+                    <industry.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                   </div>
-                  <span className="text-foreground font-medium">{industry.name}</span>
+                  <span className="text-foreground font-medium text-sm md:text-base">{industry.name}</span>
                 </div>
               ))}
             </div>
@@ -290,23 +297,23 @@ export const CorporateGifting = () => {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-accent to-accent/80 rounded-2xl p-8 md:p-12 text-center">
-          <h3 className="font-display text-3xl md:text-4xl font-bold text-primary mb-4">
+        <div className="bg-gradient-to-r from-accent to-accent/80 rounded-xl md:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-12 text-center">
+          <h3 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-3 md:mb-4">
             Get a Quote for Corporate Gift Bags
           </h3>
-          <p className="text-primary/80 max-w-2xl mx-auto mb-8">
+          <p className="text-primary/80 max-w-2xl mx-auto mb-6 md:mb-8 text-sm md:text-base px-2">
             If you are searching for a <strong className="text-primary">reliable corporate gift bag supplier in Kerala</strong>, 
             Ozobags can support your bulk and custom requirements.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm md:text-lg px-6 md:px-8 w-full sm:w-auto">
               📞 Contact Us Now
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8">
+            <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-sm md:text-lg px-6 md:px-8 w-full sm:w-auto">
               📩 Share Your Brief
             </Button>
           </div>
-          <p className="text-primary/70 text-sm mt-6">
+          <p className="text-primary/70 text-xs md:text-sm mt-4 md:mt-6">
             Ozobags – Custom Bag Manufacturer in Kerala
           </p>
         </div>

@@ -10,56 +10,56 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-12 md:py-20 bg-background">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mb-4">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3 md:mb-4">
               Let's Work Together
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base md:text-xl text-muted-foreground px-2">
               Ready to start your next project? Get in touch with our team
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
             <div className="animate-slide-in-left">
-              <h3 className="font-display text-2xl font-bold text-primary mb-6">
+              <h3 className="font-display text-xl md:text-2xl font-bold text-primary mb-4 md:mb-6">
                 Get in Touch
               </h3>
               
-              <div className="space-y-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-accent" />
+              <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                   </div>
                   <div>
-                    <div className="font-semibold text-primary mb-1">Email</div>
-                    <a href="mailto:info@ozobags.com" className="text-muted-foreground hover:text-accent transition-colors">
+                    <div className="font-semibold text-primary mb-1 text-sm md:text-base">Email</div>
+                    <a href="mailto:info@ozobags.com" className="text-muted-foreground hover:text-accent transition-colors text-sm md:text-base break-all">
                       info@ozobags.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-accent" />
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                   </div>
                   <div>
-                    <div className="font-semibold text-primary mb-1">Phone</div>
-                    <a href="tel:+1234567890" className="text-muted-foreground hover:text-accent transition-colors">
+                    <div className="font-semibold text-primary mb-1 text-sm md:text-base">Phone</div>
+                    <a href="tel:+1234567890" className="text-muted-foreground hover:text-accent transition-colors text-sm md:text-base">
                       +1 (234) 567-890
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-accent" />
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                   </div>
                   <div>
-                    <div className="font-semibold text-primary mb-1">Location</div>
-                    <p className="text-muted-foreground">
+                    <div className="font-semibold text-primary mb-1 text-sm md:text-base">Location</div>
+                    <p className="text-muted-foreground text-sm md:text-base">
                       Industrial Area, Manufacturing District<br />
                       City, Country
                     </p>
@@ -67,30 +67,30 @@ export const Contact = () => {
                 </div>
               </div>
 
-              <div className="bg-accent/5 p-6 rounded-lg">
-                <h4 className="font-display font-semibold text-primary mb-2">
+              <div className="bg-accent/5 p-4 md:p-6 rounded-lg">
+                <h4 className="font-display font-semibold text-primary mb-2 text-sm md:text-base">
                   Minimum Order Quantity
                 </h4>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-sm md:text-base">
                   We accommodate orders starting from 500 units. Contact us for custom requirements.
                 </p>
               </div>
             </div>
 
             <div className="animate-slide-in-right">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-primary mb-2">
                       Name
                     </label>
-                    <Input placeholder="Your name" required />
+                    <Input placeholder="Your name" required className="h-11 md:h-12" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-primary mb-2">
                       Company
                     </label>
-                    <Input placeholder="Company name" required />
+                    <Input placeholder="Company name" required className="h-11 md:h-12" />
                   </div>
                 </div>
 
@@ -98,14 +98,14 @@ export const Contact = () => {
                   <label className="block text-sm font-medium text-primary mb-2">
                     Email
                   </label>
-                  <Input type="email" placeholder="your@email.com" required />
+                  <Input type="email" placeholder="your@email.com" required className="h-11 md:h-12" />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-primary mb-2">
                     Phone
                   </label>
-                  <Input type="tel" placeholder="+1 (234) 567-890" required />
+                  <Input type="tel" placeholder="+1 (234) 567-890" required className="h-11 md:h-12" />
                 </div>
 
                 <div>
@@ -114,12 +114,13 @@ export const Contact = () => {
                   </label>
                   <Textarea
                     placeholder="Tell us about your project requirements..."
-                    rows={5}
+                    rows={4}
                     required
+                    className="resize-none"
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90">
+                <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 h-12 md:h-14">
                   Send Inquiry
                 </Button>
               </form>

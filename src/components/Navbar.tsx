@@ -18,18 +18,17 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
           
           {/* LOGO PLACEMENT */}
           <div className="flex items-center">
             <a href="#home" className="transition-opacity hover:opacity-80">
-              {/* 2. Use the imported variable name here */}
               <img 
                 src={ozoLogo} 
                 alt="OZO Bags" 
-                className="h-12 w-auto object-contain" 
+                className="h-10 md:h-12 w-auto object-contain" 
               />
             </a>
           </div>
@@ -62,12 +61,12 @@ export const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-white">
+          <div className="md:hidden py-4 border-t border-border bg-background max-h-[calc(100vh-4rem)] overflow-y-auto">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="block py-3 text-foreground hover:text-accent transition-colors font-medium"
+                className="block py-3 text-foreground hover:text-accent transition-colors font-medium text-sm"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
