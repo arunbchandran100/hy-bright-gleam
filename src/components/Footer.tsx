@@ -18,9 +18,11 @@ export const Footer = () => {
             <h4 className="font-display font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-white/70">
               <li><a href="#home" className="hover:text-accent transition-colors">Home</a></li>
-              <li><a href="#products" className="hover:text-accent transition-colors">Products</a></li>
+              <li><a href="#corporate-gifting" className="hover:text-accent transition-colors">Corporate Gifting</a></li>
               <li><a href="#manufacturing" className="hover:text-accent transition-colors">Manufacturing</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors">Products</a></li>
               <li><a href="#clients" className="hover:text-accent transition-colors">Our Clients</a></li>
+              <li><a href="#contact" className="hover:text-accent transition-colors">Contact</a></li>
             </ul>
           </div>
 

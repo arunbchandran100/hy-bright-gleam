@@ -29,10 +29,10 @@ const whyChooseUs = [
 ];
 
 const industries = [
-  { icon: Building2, name: "IT companies and startups" },
+  { icon: Truck, name: "Travel" },
+  { icon: Building2, name: "Medical" },
+  { icon: Package, name: "Delivery" },
   { icon: Briefcase, name: "Corporate offices and businesses" },
-  { icon: GraduationCap, name: "Educational institutions" },
-  { icon: Calendar, name: "Event management companies" },
   { icon: Users, name: "Organisations planning bulk gifting initiatives" },
 ];
 
@@ -51,7 +51,7 @@ export const CorporateGifting = () => {
             <div className="p-8 md:p-12">
               <span className="text-accent font-semibold text-sm uppercase tracking-wider">Corporate Solutions</span>
               <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mt-2">
-                Corporate Gift Bags in Kerala
+                Corporate Gifting
               </h2>
             </div>
           </div>
