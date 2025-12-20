@@ -44,7 +44,7 @@ export const ProductCategories = () => {
         ([entry]) => {
           if (entry.isIntersecting) {
             setVisibleCards((prev) => new Set(prev).add(index));
-            
+
             // Set as active when mostly visible
             if (entry.intersectionRatio > 0.5) {
               setActiveIndex(index);
@@ -99,7 +99,10 @@ export const ProductCategories = () => {
                     src={category.image}
                     alt={category.title}
                     className={`w-full h-full object-cover transition-all duration-700 ${
-                      activeIndex === index ? "scale-110" : "group-hover:scale-105"
+                      // Extra zoom for Delivery Bags so it visually fits the square better
+                      category.title === "Delivery Bags" ? "scale-[1.10]" : ""
+                    } ${
+                      activeIndex === index ? "scale-105" : "group-hover:scale-105"
                     }`}
                   />
                   <div
@@ -110,14 +113,13 @@ export const ProductCategories = () => {
                   {/* Spotlight effect when active */}
                   <div
                     className={`absolute inset-0 transition-opacity duration-500 ${
-                      activeIndex === index
-                        ? "opacity-100"
-                        : "opacity-0"
+                      activeIndex === index ? "opacity-100" : "opacity-0"
                     }`}
                     style={{
-                      background: activeIndex === index
-                        ? "radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.3) 100%)"
-                        : "none",
+                      background:
+                        activeIndex === index
+                          ? "radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.3) 100%)"
+                          : "none",
                     }}
                   />
                 </div>
@@ -129,7 +131,9 @@ export const ProductCategories = () => {
                   >
                     {category.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm md:text-base">{category.description}</p>
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    {category.description}
+                  </p>
                 </div>
               </Card>
             </div>
