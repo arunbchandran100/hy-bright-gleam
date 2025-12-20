@@ -1,8 +1,19 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Package, Truck, Users, Building2, GraduationCap, Calendar, Briefcase } from "lucide-react";
-import corporateHero from "@/assets/corporate-gifting-hero.jpg";
+import { CheckCircle, Package, Truck, Users, Building2, Calendar, Briefcase, ChevronUp, ChevronDown } from "lucide-react";
+import corporateHero1 from "@/assets/corporate-hero-1.jpg";
+import corporateHero2 from "@/assets/corporate-hero-2.jpg";
+import corporateHero3 from "@/assets/corporate-hero-3.jpg";
+import corporateHero4 from "@/assets/corporate-hero-4.jpg";
 import corporateLaptopBags from "@/assets/corporate-laptop-bags.jpg";
 import corporateCustomization from "@/assets/corporate-customization.jpg";
+
+const heroImages = [
+  { src: corporateHero1, alt: "Corporate gift bags collection" },
+  { src: corporateHero2, alt: "Employee welcome kit with branded backpack" },
+  { src: corporateHero3, alt: "Custom branded corporate bags" },
+  { src: corporateHero4, alt: "Conference and event giveaway bags" },
+];
 
 const bagSolutions = [
   "Laptop bags for employee onboarding & welcome kits",
@@ -29,25 +40,87 @@ const whyChooseUs = [
 ];
 
 const industries = [
-  { icon: Truck, name: "Travel" },
-  { icon: Building2, name: "Medical" },
-  { icon: Package, name: "Delivery" },
-  { icon: Briefcase, name: "Corporate offices and businesses" },
-  { icon: Users, name: "Organisations planning bulk gifting initiatives" },
+  { icon: Truck, name: "Travel & Tourism Industry" },
+  { icon: Building2, name: "Healthcare & Medical Sector" },
+  { icon: Package, name: "Logistics & Delivery Services" },
+  { icon: Briefcase, name: "Corporate Offices & Enterprises" },
+  { icon: Users, name: "Organisations Planning Bulk Gifting" },
 ];
 
 export const CorporateGifting = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+  };
+
   return (
     <section id="corporate-gifting" className="py-20 bg-muted/30">
       <div className="container px-4">
-        {/* Hero Image */}
+        {/* Hero Image Carousel */}
         <div className="relative rounded-2xl overflow-hidden mb-16 shadow-elegant">
-          <img 
-            src={corporateHero} 
-            alt="Corporate gift bags collection featuring branded laptop bags and backpacks" 
-            className="w-full h-64 md:h-96 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end">
+          <div className="relative h-64 md:h-96">
+            {heroImages.map((image, index) => (
+              <img
+                key={index}
+                src={image.src}
+                alt={image.alt}
+                className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+                  index === currentImageIndex
+                    ? "opacity-100 translate-y-0"
+                    : index < currentImageIndex
+                    ? "opacity-0 -translate-y-full"
+                    : "opacity-0 translate-y-full"
+                }`}
+              />
+            ))}
+          </div>
+          
+          {/* Navigation buttons */}
+          <button
+            onClick={goToPrevious}
+            className="absolute right-4 top-4 bg-primary/80 hover:bg-primary text-primary-foreground p-2 rounded-full transition-all duration-300 hover:scale-110"
+            aria-label="Previous image"
+          >
+            <ChevronUp className="w-5 h-5" />
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute right-4 top-16 bg-primary/80 hover:bg-primary text-primary-foreground p-2 rounded-full transition-all duration-300 hover:scale-110"
+            aria-label="Next image"
+          >
+            <ChevronDown className="w-5 h-5" />
+          </button>
+          
+          {/* Slide indicators */}
+          <div className="absolute right-16 top-4 flex flex-col gap-2">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex
+                    ? "bg-accent h-6"
+                    : "bg-primary-foreground/50 hover:bg-primary-foreground/80"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end pointer-events-none">
             <div className="p-8 md:p-12">
               <span className="text-accent font-semibold text-sm uppercase tracking-wider">Corporate Solutions</span>
               <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mt-2">

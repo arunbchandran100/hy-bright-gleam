@@ -1,30 +1,30 @@
 import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
-import handbagsImage from "@/assets/handbags-category.jpg";
-import backpacksImage from "@/assets/backpacks-category.jpg";
-import slingbagsImage from "@/assets/slingbags-category.jpg";
-import walletsImage from "@/assets/wallets-category.jpg";
+import officeBagsImage from "@/assets/office-bags-category.jpg";
+import deliveryBagsImage from "@/assets/delivery-bags-category.jpg";
+import laptopBagsImage from "@/assets/laptop-bags-category.jpg";
+import utilityBagsImage from "@/assets/utility-bags-category.jpg";
 
 const categories = [
   {
     title: "Office Bags",
     description: "Professional bags designed for the modern workplace",
-    image: handbagsImage,
+    image: officeBagsImage,
   },
   {
     title: "Delivery Bags",
     description: "Durable and spacious bags for delivery professionals",
-    image: backpacksImage,
+    image: deliveryBagsImage,
   },
   {
     title: "Laptop Bags",
     description: "Protective and stylish bags for your tech essentials",
-    image: slingbagsImage,
+    image: laptopBagsImage,
   },
   {
     title: "Utility Bags",
     description: "Versatile bags for everyday business needs",
-    image: walletsImage,
+    image: utilityBagsImage,
   },
 ];
 
@@ -120,16 +120,6 @@ export const ProductCategories = () => {
                         : "none",
                     }}
                   />
-                  {/* Active indicator badge */}
-                  <div
-                    className={`absolute top-4 right-4 bg-accent text-primary px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
-                      activeIndex === index
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 -translate-y-2"
-                    }`}
-                  >
-                    Featured
-                  </div>
                 </div>
                 <div className="p-6">
                   <h3

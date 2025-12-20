@@ -38,8 +38,8 @@ export const Manufacturing = () => {
                 <div className="text-sm text-muted-foreground">Units per month</div>
               </div>
               <div className="bg-muted p-6 rounded-lg">
-                <div className="text-3xl font-display font-bold text-accent mb-2">ISO 9001</div>
-                <div className="text-sm text-muted-foreground">Certified facility</div>
+                <div className="text-2xl md:text-3xl font-display font-bold text-accent mb-2">IndiaMART</div>
+                <div className="text-sm text-muted-foreground">TrustSEAL Certified</div>
               </div>
             </div>
           </div>
