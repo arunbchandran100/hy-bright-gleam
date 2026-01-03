@@ -33,7 +33,7 @@ export const ProductCategories = () => {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const sectionRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -74,10 +74,13 @@ export const ProductCategories = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {categories.map((category, index) => (
-            <div
+            <a
               key={category.title}
+              href="https://ozobag.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               ref={(el) => (cardRefs.current[index] = el)}
-              className={`transform transition-all duration-700 ease-out ${
+              className={`transform transition-all duration-700 ease-out block ${
                 visibleCards.has(index)
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12"
@@ -141,7 +144,7 @@ export const ProductCategories = () => {
                   </p>
                 </div>
               </Card>
-            </div>
+            </a>
           ))}
         </div>
 

@@ -147,8 +147,8 @@ export const CorporateGifting = () => {
         </div>
 
         {/* Bag Solutions */}
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20 items-center">
-          <div className="rounded-xl md:rounded-2xl overflow-hidden shadow-card order-2 lg:order-1 aspect-video lg:aspect-auto">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20 items-stretch">
+          <div className="rounded-xl md:rounded-2xl overflow-hidden shadow-card order-2 lg:order-1">
             <img 
               src={corporateLaptopBags} 
               alt="Corporate welcome kit with branded laptop bags" 
@@ -157,9 +157,9 @@ export const CorporateGifting = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="bg-card rounded-xl md:rounded-2xl p-5 md:p-8 shadow-card order-1 lg:order-2">
+          <div className="bg-card rounded-xl md:rounded-2xl p-5 md:p-8 shadow-card order-1 lg:order-2 flex flex-col">
             <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/20 flex items-center justify-center">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
                 <Package className="w-5 h-5 md:w-6 md:h-6 text-accent" />
               </div>
               <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground">
@@ -169,7 +169,7 @@ export const CorporateGifting = () => {
             <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base">
               We manufacture and supply a wide range of bags designed specifically for corporate and institutional use:
             </p>
-            <ul className="space-y-2 md:space-y-3">
+            <ul className="space-y-2 md:space-y-3 flex-grow">
               {bagSolutions.map((solution, index) => (
                 <li key={index} className="flex items-start gap-2 md:gap-3">
                   <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-accent mt-0.5 flex-shrink-0" />
@@ -184,10 +184,10 @@ export const CorporateGifting = () => {
         </div>
 
         {/* Customisation Options */}
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20 items-center">
-          <div className="bg-card rounded-xl md:rounded-2xl p-5 md:p-8 shadow-card">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20 items-stretch">
+          <div className="bg-card rounded-xl md:rounded-2xl p-5 md:p-8 shadow-card flex flex-col">
             <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <Users className="w-5 h-5 md:w-6 md:h-6 text-primary" />
               </div>
               <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground">
@@ -197,7 +197,7 @@ export const CorporateGifting = () => {
             <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base">
               Ozobags offers end-to-end customisation support for corporate bulk orders:
             </p>
-            <ul className="space-y-2 md:space-y-3">
+            <ul className="space-y-2 md:space-y-3 flex-grow">
               {customisationOptions.map((option, index) => (
                 <li key={index} className="flex items-start gap-2 md:gap-3">
                   <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -209,7 +209,7 @@ export const CorporateGifting = () => {
               Our team works closely with clients to ensure the final output meets both functional and branding expectations.
             </p>
           </div>
-          <div className="rounded-xl md:rounded-2xl overflow-hidden shadow-card aspect-video lg:aspect-auto">
+          <div className="rounded-xl md:rounded-2xl overflow-hidden shadow-card">
             <img 
               src={corporateCustomization} 
               alt="Custom branded corporate bags with logo embossing"

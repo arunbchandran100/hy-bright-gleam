@@ -25,12 +25,16 @@ export const Hero = () => {
             Leading manufacturer of high-quality handbags, backpacks, and custom bag solutions for wholesale and B2B clients worldwide
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center animate-fade-in px-4" style={{ animationDelay: '0.4s' }}>
-            <Button size="lg" variant="secondary" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 bg-accent hover:bg-accent/90 text-primary font-semibold w-full sm:w-auto">
-              View Our Catalog
-            </Button>
-            <Button size="lg" variant="outline-light" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 font-semibold w-full sm:w-auto">
-              Get Quote
-            </Button>
+            <a href="https://ozobag.com/" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="secondary" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 bg-accent hover:bg-accent/90 text-primary font-semibold w-full sm:w-auto">
+                View Our Catalog
+              </Button>
+            </a>
+            <a href="#contact">
+              <Button size="lg" variant="outline-light" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 font-semibold w-full sm:w-auto">
+                Get Quote
+              </Button>
+            </a>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-10 md:mt-16 pt-8 md:pt-16 border-t border-primary-foreground/20">

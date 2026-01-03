@@ -44,9 +44,11 @@ export const Navbar = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant="default" className="bg-primary hover:bg-primary/90">
-              Request Quote
-            </Button>
+            <a href="#contact">
+              <Button variant="default" className="bg-primary hover:bg-primary/90">
+                Request Quote
+              </Button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -72,9 +74,11 @@ export const Navbar = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant="default" className="w-full mt-4 bg-primary hover:bg-primary/90">
-              Request Quote
-            </Button>
+            <a href="#contact" onClick={() => setIsOpen(false)}>
+              <Button variant="default" className="w-full mt-4 bg-primary hover:bg-primary/90">
+                Request Quote
+              </Button>
+            </a>
           </div>
         )}
       </div>

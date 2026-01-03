@@ -50,7 +50,7 @@ export const Footer = () => {
             <h4 className="font-display font-semibold mb-3 md:mb-4 text-sm md:text-base">Connect</h4>
             <div className="flex gap-3 md:gap-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/ozobags"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 md:w-10 md:h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-all"
