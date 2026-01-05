@@ -38,11 +38,11 @@ export const Manufacturing = () => {
                 <div className="text-2xl md:text-3xl font-display font-bold text-accent mb-1 md:mb-2">10,000+</div>
                 <div className="text-xs md:text-sm text-muted-foreground">Units per month</div>
               </div>
-              <div className="bg-muted p-4 md:p-6 rounded-lg flex items-center justify-center">
+              <div className="flex items-center justify-center">
                 <img
                   src={indiamartTrustseal}
                   alt="IndiaMART TrustSEAL Certified"
-                  className="max-h-16 md:max-h-20 object-contain"
+                  className="max-h-20 md:max-h-24 object-contain"
                 />
               </div>
             </div>

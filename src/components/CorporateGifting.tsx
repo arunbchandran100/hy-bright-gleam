@@ -245,7 +245,7 @@ export const CorporateGifting = () => {
               <div className="bg-primary-foreground/10 rounded-lg md:rounded-xl p-4 md:p-6">
                 <h4 className="font-display font-bold text-accent mb-1 md:mb-2 text-sm md:text-base">Delivery Coverage</h4>
                 <p className="text-primary-foreground/90 text-xs md:text-sm">
-                  Kerala and across India
+                  Kerala and across India. We also export internationally to meet global demand.
                 </p>
               </div>
             </div>

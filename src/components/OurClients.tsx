@@ -181,9 +181,6 @@ export const OurClients = () => {
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
-          <p className="text-center text-sm text-muted-foreground mt-6">
-            Adding more logos is easy - they automatically accommodate in the carousel
-          </p>
         </div>
       </div>
     </section>
